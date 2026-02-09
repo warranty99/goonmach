@@ -12,7 +12,7 @@ import subprocess
 
 version = "1.11"
 r3 = r"https://rule34.xxx/index.php?page=post&s=view&id=" # I think this is the simplest way, I could add a tag as a little watermark ig?
-ng = r"https://www.newgrounds.com/" # This is useless but will remain as a watermark of NG supremacy in internet porn.
+ng = r"https://www.newgrounds.com/" # This is useless but will remain as a watermark of NG supremacy in internet, y'know.
 
 formattedlistPG1 = {
     "1) " : "Tomboy Solar Flare by Moour",
@@ -117,4 +117,5 @@ else:
     time.sleep(1)
     print("Goodbye.")
     time.sleep(0.5)
+
     quit()
