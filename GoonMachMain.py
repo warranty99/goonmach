@@ -11,8 +11,37 @@ import sys
 import subprocess
 
 version = "1.11"
-r3 = r"https://rule34.xxx/index.php?page=post&s=view&id=" # I think this is the simplest way, I could add a tag as a little watermark ig?
-ng = r"https://www.newgrounds.com/" # This is useless but will remain as a watermark of NG supremacy in internet, y'know.
+r3 = r"https://rule34.xxx/index.php?page=post&s=view&id="
+ng = r"https://www.newgrounds.com/" # This is useless but will remain.
+watermark = r"&tags=GOONMACH" 
+
+# Oh my god... It even has a watermark...
+                                        
+# ++==++****@*. ..+%:.     .::.*=..=.-:*-..:::::::::::::::: 
+# ===-=-::+@#:  -. : .- .. .=. . .*:.::#...::::::::-.::.::: 
+#.@%###@@@@-:...  -  :               @=@-..::::::.:-::::::- 
+#.#*+**==@.   ...   +=@@@@@@@@@%#+.  ..%@...::::--:::::--:: 
+#.******@- .-......::-=*===+#*@@@@%+%%+  @:::-:.:::.:::-::: 
+#  +***+%:@@+ ....:::+--*+=-::-+*%#%%##@=#* ....:::::::::::: 
+#.+===-@@@   ....  ..:.=++*++=-:--==:-@%*:..:::--:::::---:: 
+#:@@@@%@-.  .... -+=-=+%*****%@@#***-%@*  ::::-:::-:::::::: 
+# ====-@--:.... :=-=+*++*##%%*#***#=*@@::..::::::::-::::::: 
+# +++*+@--==:.:+#*:.         .-=*+%@@@@...:::.::::::....::: 
+#.**++*@#.--@: .==##%#         -#     ...:---=-::-===+=--=- 
+#:@#@@@***+=:==:=:=+#%@@@@@@%*-%@   -@# .:-=-====+++-===+=+ 
+# +++=%:  @--.===:::--=--==-*+.-@@@@@@ .*... .  .   ..-  :. 
+# ++*=@ @   *-=+:....====*+=*=:-%*::@+     ::--------:----: 
+# =-=:@ @   *-+:.....::-+= ...:+#*:@+ @@@@@.        ..-:::: 
+# ####@-    *::..:::-=++#@#    --*++ -@*+#@@@@@@@@@@ :::::: 
+# =+@@@  - .+:-::::-:-:-+*%#%*@@@@  .@@%%@%#%####@@ .:-:::- 
+# @@@   @@+@-:::-=--: .   .%@%:. +@@%+-#@*+#*###%@# .:::-:: 
+#-#   .   +=-.::..:==.+@@@+:....     .==@@@@##%@@@. ::::::: 
+#  .:.... -@:-:-... ::@........+#%#@@.  .=@@@@@@@+ :::::::: 
+#  .:....  *#.::::::  = :%#####*+-.:=@#          :::::-:::: 
+# :.:.....  @##:::::. @@-*---:. +:++%#  :::....: #=:::::::: 
+# ..:......  #*==... .@  :=++==+*#%#+@= :.:...:. %::::::::: 
+# ...:......  ##:    %@..***=:::    .-  : .:..-  @.:::::::: 
+# :..:..:....  =:%@@#@% :..-=*###@@@@@+ :..:..: .@:.::--::: 
 
 formattedlistPG1 = {
     "1) " : "Tomboy Solar Flare by Moour",
@@ -31,7 +60,15 @@ formattedlistPG1 = {
 
 formattedlistPG2 = {
     "13) " : "Maid CG by Atkoart (longer)",
-    "14) " : "Yandere Dev Foursome by AnnaAnon"
+    "14) " : "Yandere Dev Foursome by AnnaAnon",
+    "15) " : "Sakura Kasugano by Rtil", # UPLOAD THE VICEB NG ONE
+    "16) " : "Omori Slime Girls by Shizuka",
+    "17) " : "Ryuuko by litsilium",
+    "18) " : "Ruuko Anim by litsilium",
+    "19) " : "Power and Kobeni by litsilium",
+    "20) " : "Kobeni BJ by Rtil",
+    "21) " : "Ranni the Witch v1 by Flou",
+    "22) " : "Ranni the Witch v2 by Flou"
 }
 
 
@@ -50,37 +87,49 @@ generalist = {
     "Halloween by Atkoart" : "15547588",
     "Maid CG by Atkoart (shorter)" : "15343576",
     "Maid CG by Atkoart (longer)" : "15655822",
-    "Yandere Dev Foursome by AnnaAnon" : "13904572" # referencia
+    "Yandere Dev Foursome by AnnaAnon" : "13904572", # referencia
+    "Sakura Kasugano by Rtil" : "4561996",
+    "Omori Slime Girls by Shizuka" : "7916031",
+    "Ryuuko by litsilium" : "6561291",
+    "Ruuko Anim by litsilium" : "15356961",
+    "Power and Kobeni by litsilium" : "7702343",
+    "Kobeni BJ by Rtil" : "7070711",
+    "Ranni the Witch HJ by Flou" : "6019115",
+    "Ranni the Witch BJ by Flou" : "11261285"
 }
 
 def GETTO(specimen):
     if sys.platform.startswith("win"):
         chrome = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
-        subprocess.Popen([chrome, "--incognito", r3+specimen])
+        subprocess.Popen([chrome, "--incognito", r3+specimen+watermark])
 
     elif sys.platform == "darwin":  # macOS 
         subprocess.Popen(["open", "-na", "Google Chrome", "--args", "--incognito", r3+specimen])
 
     else:  # Linux
-        subprocess.Popen(["google-chrome", "--incognito", r3+specimen])
+        subprocess.Popen(["google-chrome", "--incognito", r3+specimen+watermark])
 
 def START(firstmessage=True):
     if firstmessage == True:
         print(r"Welcome to the system! respond with 'LIST' to access the list, or 'INFO' for some information on this program!")
     answer = input(r"(GOON MACHINE) >>> ")
     if "LIST" in answer:
+        print("")
         for i, (key, value) in enumerate(formattedlistPG1.items(), start=1):
             print(f"{i}) {value}")
         print("PAGE 1/2")    
+        print("")
         print(r"Type the number of the specimen you'd like to access, to go back, simply type 'BACK', for next page, type 'NEXT' ")    
         answer = input(r"(GOON MACHINE) >>> ")
         if "BACK" in answer:
             START(firstmessage=False)
 
         elif "NEXT" in answer:
+            print("")
             for i, (key, value) in enumerate(formattedlistPG2.items(), start=13):
                 print(f"{i}) {value}")
             print("PAGE 2/2")    
+            print("")
             print(r"Type the number of the specimen you'd like to access, to go back, simply type 'BACK', for next page, type 'NEXT' ")  
             answer = input(r"(GOON MACHINE) >>> ")
             if "BACK" in answer:
@@ -88,15 +137,17 @@ def START(firstmessage=True):
             else:
                 specimen = generalist[formattedlistPG2[str(answer + ") ")]]    # It is way too late to make this a function of its own, so layers it is...
                 print("En route to the specimen!")
-                GETTO(specimen)
-                START()
+                GETTO(specimen) # If you're snooping through this code for whatever reason, you're a bitch!
+                START() # Unless you're a friend of mine, then you're good dw.
         else:
             specimen = generalist[formattedlistPG1[str(answer + ") ")]]    
             print("En route to the specimen!")
             GETTO(specimen)
             START()
     elif "INFO" in answer:
-        print("This program was developed in early 2026 by a very handsome and smart guy, it is currently in version ", version, ". This program has not been tested on a MAC, but should work. This program is not meant for mobile.")
+        print("This program was developed in early 2026 by a very handsome and smart guy, it is currently in version", version)
+        print("This program has not been tested on a MAC, but should work. This program is NOT meant for mobile.")
+        print("And yes, it does actually have a watermark.") # https://c.tenor.com/Dc-4lEQkfz8AAAAd/tenor.gif
         START(firstmessage=False)
 
 
@@ -117,5 +168,4 @@ else:
     time.sleep(1)
     print("Goodbye.")
     time.sleep(0.5)
-
     quit()
