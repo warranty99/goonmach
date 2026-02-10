@@ -10,7 +10,7 @@ import os
 import sys
 import subprocess
 
-version = "1.21"
+version = "1.22"
 r3 = r"https://rule34.xxx/index.php?page=post&s=view&id="
 ng = r"https://www.newgrounds.com/" # This is useless but will remain.
 watermark = r"&tags=GOONMACH" 
@@ -173,3 +173,4 @@ else:
     print("Goodbye.")
     time.sleep(0.5)
     quit()
+
