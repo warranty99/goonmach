@@ -10,7 +10,7 @@ import os
 import sys
 import subprocess
 
-version = "1.11"
+version = "1.21"
 r3 = r"https://rule34.xxx/index.php?page=post&s=view&id="
 ng = r"https://www.newgrounds.com/" # This is useless but will remain.
 watermark = r"&tags=GOONMACH" 
@@ -64,7 +64,7 @@ formattedlistPG2 = {
     "15) " : "Sakura Kasugano by Rtil", # UPLOAD THE VICEB NG ONE
     "16) " : "Omori Slime Girls by Shizuka",
     "17) " : "Ryuuko by litsilium",
-    "18) " : "Ruuko Anim by litsilium",
+    "18) " : "Ryuuko Anim by litsilium",
     "19) " : "Power and Kobeni by litsilium",
     "20) " : "Kobeni BJ by Rtil",
     "21) " : "Ranni the Witch v1 by Flou",
@@ -91,7 +91,7 @@ generalist = {
     "Sakura Kasugano by Rtil" : "4561996",
     "Omori Slime Girls by Shizuka" : "7916031",
     "Ryuuko by litsilium" : "6561291",
-    "Ruuko Anim by litsilium" : "15356961",
+    "Ryuuko Anim by litsilium" : "15356961",
     "Power and Kobeni by litsilium" : "7702343",
     "Kobeni BJ by Rtil" : "7070711",
     "Ranni the Witch HJ by Flou" : "6019115",
