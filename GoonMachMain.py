@@ -135,7 +135,11 @@ def START(firstmessage=True):
             if "BACK" in answer:
                 START(firstmessage=False)
             else:
-                specimen = generalist[formattedlistPG2[str(answer + ") ")]]    # It is way too late to make this a function of its own, so layers it is...
+                try:
+                    specimen = generalist[formattedlistPG2[str(answer + ") ")]]    # It is way too late to make this a function of its own, so layers it is...
+                except KeyError:
+                    specimen = generalist[formattedlistPG1[str(answer + ") ")]] 
+
                 print("En route to the specimen!")
                 GETTO(specimen) # If you're snooping through this code for whatever reason, you're a bitch!
                 START() # Unless you're a friend of mine, then you're good dw.
