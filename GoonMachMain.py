@@ -4,16 +4,24 @@
 # This program was created by SkibidiToiletMaster9900
 # Where are the epstein files??
 
+# python -m PyInstaller --onefile "C:\Users\Usuario\Desktop\gang shit\python\GoonMachMain.py"
+# I know this is in the source code, I dont care!!
+
+import re
 import webbrowser
 import time
 import os
 import sys
 import subprocess
 
-version = "1.22"
-r3 = r"https://rule34.xxx/index.php?page=post&s=view&id="
+version = "1.30"
+fuckass = 33 + 1
+r3 = r"https://rule"+str(fuckass)+".xxx/index.php?page=post&s=view&id="
+print(r3)
 ng = r"https://www.newgrounds.com/" # This is useless but will remain.
 watermark = r"&tags=GOONMACH" 
+parantheses = r"^([A-Z]+)\(([^()]*)\)\(([^()]*)\)$" # This is the craziest fucking regex ive ever seen... oh my god..
+AMOUNT_OF_USERLISTS = 0
 
 # Oh my god... It even has a watermark...
                                         
@@ -54,7 +62,7 @@ formattedlistPG1 = {
     "8) " : "Cheelai BBJ by Ariademon",
     "9) " : "Sweaty Mixi by Vixycore",
     "10) " : "Jane Doe BJ FMDM by NekoNSFW",
-    "11) " : "Halloween by Atkoart",
+    "11) " : "Halloween by Atkoart", 
     "12)" : "Maid CG by Atkoart (shorter)"
 }    
 
@@ -69,6 +77,10 @@ formattedlistPG2 = {
     "20) " : "Kobeni BJ by Rtil",
     "21) " : "Ranni the Witch v1 by Flou",
     "22) " : "Ranni the Witch v2 by Flou"
+}
+
+userlist = {
+
 }
 
 
@@ -104,7 +116,7 @@ def GETTO(specimen):
         subprocess.Popen([chrome, "--incognito", r3+specimen+watermark])
 
     elif sys.platform == "darwin":  # macOS 
-        subprocess.Popen(["open", "-na", "Google Chrome", "--args", "--incognito", r3+specimen])
+        subprocess.Popen(["open", "-na", "Google Chrome", "--args", "--incognito", r3+specimen+watermark])
 
     else:  # Linux
         subprocess.Popen(["google-chrome", "--incognito", r3+specimen+watermark])
@@ -137,14 +149,28 @@ def START(firstmessage=True):
             else:
                 try:
                     specimen = generalist[formattedlistPG2[str(answer + ") ")]]    # It is way too late to make this a function of its own, so layers it is...
+                    GETTO(specimen)
                 except KeyError:
-                    specimen = generalist[formattedlistPG1[str(answer + ") ")]] 
-
+                    try:
+                        specimen = generalist[formattedlistPG1[str(answer + ") ")]] 
+                        GETTO(specimen)
+                    except KeyError:
+                        print(r"Sorry dude, we dont seem to have that one, try typing JUST the number eg: '1'")    
+                        START(firstmessage=False)
                 print("En route to the specimen!")
                 GETTO(specimen) # If you're snooping through this code for whatever reason, you're a bitch!
                 START() # Unless you're a friend of mine, then you're good dw.
         else:
-            specimen = generalist[formattedlistPG1[str(answer + ") ")]]    
+            try:
+               specimen = generalist[formattedlistPG1[str(answer + ") ")]]    
+               GETTO(specimen)
+            except KeyError:
+                try:
+                    specimen = generalist[formattedlistPG2[str(answer + ") ")]]   
+                    GETTO(specimen)
+                except KeyError:
+                    print(r"Sorry dude, we dont seem to have that one, try typing JUST the number eg: '1'")     
+                    START(firstmessage=False)
             print("En route to the specimen!")
             GETTO(specimen)
             START()
@@ -153,24 +179,51 @@ def START(firstmessage=True):
         print("This program has not been tested on a MAC, but should work. This program is NOT meant for mobile.")
         print("And yes, it does actually have a watermark.") # https://c.tenor.com/Dc-4lEQkfz8AAAAd/tenor.gif
         START(firstmessage=False)
+    else:
+        try:
+            specimen = generalist[formattedlistPG1[str(answer + ") ")]]   
+            GETTO(specimen) 
+        except KeyError:
+            try:
+                specimen = generalist[formattedlistPG2[str(answer + ") ")]] 
+                print("En route to the specimen!")
+                GETTO(specimen)
+                START(firstmessage=False)
+            except KeyError:
+                if "ADD" in answer:
+                    match = re.search(parantheses, answer)
+                    if match is not None:
+                        COMMAND = match.group(1) # Wont use this, will optimize later, lol
+                        TITLE = match.group(2)
+                        ID = match.group(3)
+                        generalist[TITLE] = ID
+                        userlist["1Us) "] = ID
+                        START(firstmessage=False)
+                    else:
+                        print(r"Sorry dude, To use the ADD you have to structure it like this: ") 
+                        print(r"ADD(TITLE)(ID)")
+                        print("There can be spaces.")   
+                else:    
+                    print("Sorry dude, I dont really get what you mean, try again?")
+                    print("Remember, 'LIST' for the list, and 'INFO' for info.. not that hard.. bro..")  
+                    START(firstmessage=False)  
+
+
 
 
 print("Hello user, please enter a password to access this program. Make sure its in all caps.")
 password = input(">>> ")
-if "GOON" in password:
-    START()
-elif "JERK" in password:
-    START()
-elif "MASTURB" in password:
-    START()
-elif "CRANK" in password:
-    START()
-elif "BEAT" in password:
+if "GOON" or "JERK" or "MASTURB" or "CRANK" in password:
     START()
 else:
-    print("Sorry, but I dont think you will find this program to be of use to you.")
-    time.sleep(1)
-    print("Goodbye.")
-    time.sleep(0.5)
-    quit()
+    print("Im giving you one more opportunity, what do you want to use this program for?")
 
+    password = input(">>> ")
+    if "GOON" or "JERK" or "MASTURB" or "CRANK" in password:
+        START()
+    else:    
+        print("So you're not here for that huh?. Alright then..")
+        time.sleep(1.7)
+        print("GET THE FUCK OUT!")
+        time.sleep(1)
+        quit()    
