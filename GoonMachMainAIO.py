@@ -15,7 +15,7 @@ import os
 import sys
 import subprocess
 
-version = "2.0-AIO"
+version = "1.0-AIO"
 fuckass = 33 + 1
 r3 = r"https://rule"+str(fuckass)+".xxx/index.php?page=post&s=view&id="
 ng = r"https://www.newgrounds.com/" # This is useless but will remain.
@@ -272,3 +272,4 @@ else:
 
     else:  # Linux
         subprocess.Popen(["google-chrome", "--incognito", "https://www.youtube.com/watch?v=NXfm5ockkVo"])
+
