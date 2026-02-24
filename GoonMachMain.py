@@ -14,10 +14,9 @@ import os
 import sys
 import subprocess
 
-version = "1.30"
+version = "1.40"
 fuckass = 33 + 1
 r3 = r"https://rule"+str(fuckass)+".xxx/index.php?page=post&s=view&id="
-print(r3)
 ng = r"https://www.newgrounds.com/" # This is useless but will remain.
 watermark = r"&tags=GOONMACH" 
 parantheses = r"^([A-Z]+)\(([^()]*)\)\(([^()]*)\)$" # This is the craziest fucking regex ive ever seen... oh my god..
@@ -74,9 +73,17 @@ formattedlistPG2 = {
     "17) " : "Ryuuko by litsilium",
     "18) " : "Ryuuko Anim by litsilium",
     "19) " : "Power and Kobeni by litsilium",
-    "20) " : "Kobeni BJ by Rtil",
-    "21) " : "Ranni the Witch v1 by Flou",
-    "22) " : "Ranni the Witch v2 by Flou"
+    "20) " : "Power by jeffmiga",
+    "21) " : "Kobeni BJ by Rtil",
+    "22) " : "Ranni the Witch v1 by Flou",
+    "23) " : "Ranni the Witch v2 by Flou",
+    "24) " : "Kagura basketball by jeffmiga"
+}
+
+formattedlistPG3 = {
+    "25) " : "Kagura waitress by jeffmiga",
+    "26) " : "Fuuka and Kotone by jeffmiga",
+    "27) " : "Persona 4 gals by jeffmiga"
 }
 
 userlist = {
@@ -105,9 +112,14 @@ generalist = {
     "Ryuuko by litsilium" : "6561291",
     "Ryuuko Anim by litsilium" : "15356961",
     "Power and Kobeni by litsilium" : "7702343",
+    "Power by jeffmiga" : "15507907",
     "Kobeni BJ by Rtil" : "7070711",
     "Ranni the Witch HJ by Flou" : "6019115",
-    "Ranni the Witch BJ by Flou" : "11261285"
+    "Ranni the Witch BJ by Flou" : "11261285",
+    "Kagura basketball by jeffmiga" : "14645473",
+    "Kagura waitress by jeffmiga" : "9935659",
+    "Fuuka and Kotone by jeffmiga" : "15301150",
+    "Persona 4 gals by jeffmiga" : "13755506"
 }
 
 def GETTO(specimen):
@@ -129,7 +141,7 @@ def START(firstmessage=True):
         print("")
         for i, (key, value) in enumerate(formattedlistPG1.items(), start=1):
             print(f"{i}) {value}")
-        print("PAGE 1/2")    
+        print("PAGE 1/3")    
         print("")
         print(r"Type the number of the specimen you'd like to access, to go back, simply type 'BACK', for next page, type 'NEXT' ")    
         answer = input(r"(GOON MACHINE) >>> ")
@@ -140,12 +152,39 @@ def START(firstmessage=True):
             print("")
             for i, (key, value) in enumerate(formattedlistPG2.items(), start=13):
                 print(f"{i}) {value}")
-            print("PAGE 2/2")    
+            print("PAGE 2/3")    
             print("")
             print(r"Type the number of the specimen you'd like to access, to go back, simply type 'BACK', for next page, type 'NEXT' ")  
             answer = input(r"(GOON MACHINE) >>> ")
             if "BACK" in answer:
                 START(firstmessage=False)
+            elif "NEXT" in answer:
+                print("")
+                for i, (key, value) in enumerate(formattedlistPG3.items(), start=25):
+                    print(f"{i}) {value}")
+                print("PAGE 3/3")    
+                print("")
+                print(r"Type the number of the specimen you'd like to access, to go back, simply type 'BACK', for next page, type 'NEXT' ")  
+                answer = input(r"(GOON MACHINE) >>> ") 
+                if "BACK" in answer:   
+                    START(firstmessage=False)
+                elif "NEXT" in answer:
+                    print("Sorry bro, this is the last page as of version " + version)  
+                else:
+                    try:
+                        specimen = generalist[formattedlistPG2[str(answer + ") ")]]
+                        GETTO(specimen)
+                    except KeyError:
+                        try:
+                            specimen = generalist[formattedlistPG1[str(answer + ") ")]] 
+                            GETTO(specimen)
+                        except KeyError:
+                            try:
+                                specimen = generalist[formattedlistPG3[str(answer + ") ")]] # KILL ME NOW PLEASE
+                                GETTO(specimen)
+                            except KeyError:    
+                                print(r"Sorry dude, we dont seem to have that one, try typing JUST the number eg: '1'")    
+                                START(firstmessage=False)
             else:
                 try:
                     specimen = generalist[formattedlistPG2[str(answer + ") ")]]    # It is way too late to make this a function of its own, so layers it is...
@@ -155,8 +194,12 @@ def START(firstmessage=True):
                         specimen = generalist[formattedlistPG1[str(answer + ") ")]] 
                         GETTO(specimen)
                     except KeyError:
-                        print(r"Sorry dude, we dont seem to have that one, try typing JUST the number eg: '1'")    
-                        START(firstmessage=False)
+                        try:
+                            specimen = generalist[formattedlistPG3[str(answer + ") ")]] # FUCKING HELL THIS IS A PAIN TO IMPLEMENT
+                            GETTO(specimen)
+                        except KeyError:    
+                            print(r"Sorry dude, we dont seem to have that one, try typing JUST the number eg: '1'")    
+                            START(firstmessage=False)
                 print("En route to the specimen!")
                 GETTO(specimen) # If you're snooping through this code for whatever reason, you're a bitch!
                 START() # Unless you're a friend of mine, then you're good dw.
@@ -169,8 +212,12 @@ def START(firstmessage=True):
                     specimen = generalist[formattedlistPG2[str(answer + ") ")]]   
                     GETTO(specimen)
                 except KeyError:
-                    print(r"Sorry dude, we dont seem to have that one, try typing JUST the number eg: '1'")     
-                    START(firstmessage=False)
+                    try: 
+                        specimen = generalist[formattedlistPG3[str(answer + ") ")]]
+                        GETTO(specimen)
+                    except KeyError:    
+                        print(r"Sorry dude, we dont seem to have that one, try typing JUST the number eg: '1'")     
+                        START(firstmessage=False)
             print("En route to the specimen!")
             GETTO(specimen)
             START()
@@ -213,13 +260,13 @@ def START(firstmessage=True):
 
 print("Hello user, please enter a password to access this program. Make sure its in all caps.")
 password = input(">>> ")
-if "GOON" or "JERK" or "MASTURB" or "CRANK" in password:
+if "GOON" in password:
     START()
 else:
     print("Im giving you one more opportunity, what do you want to use this program for?")
 
     password = input(">>> ")
-    if "GOON" or "JERK" or "MASTURB" or "CRANK" in password:
+    if "GOON" in password:
         START()
     else:    
         print("So you're not here for that huh?. Alright then..")
