@@ -5,7 +5,7 @@
 # This program was created by SkibidiToiletMaster9900
 # Where are the epstein files??
 
-# python -m PyInstaller --onefile "C:\Users\Usuario\Desktop\gang shit\python\GoonMachMain.py"
+# python -m PyInstaller --onefile "C:\Users\Usuario\Desktop\gang shit\python\GoonMachMainGPTver.py"
 # I know this is in the source code, I dont care!!
 
 import re
@@ -272,4 +272,3 @@ else:
 
     else:  # Linux
         subprocess.Popen(["google-chrome", "--incognito", "https://www.youtube.com/watch?v=NXfm5ockkVo"])
-
